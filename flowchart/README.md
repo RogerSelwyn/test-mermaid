@@ -82,4 +82,4 @@ participant M as Module
 participant J as 9006 JSON
 I->>+M: Get quota
 M->>J: pvr/storage
-M->>-I: Quot info
+M->>-I: Quota info
