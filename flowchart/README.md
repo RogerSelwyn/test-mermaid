@@ -18,9 +18,11 @@ sequenceDiagram
 participant I as Integration
 participant M as Module
 participant J as 9006 JSON
-participant S as 49153 SOAP
-participant X as 49153 XML
 participant W as 9006 Websocket
+participant X as 49153 XML
+participant S as 49153 SOAP
+participant W as 9006 Websocket
+participant E as EPG
 opt
   I->>M: Initialise (If not done at startup)
 end
@@ -41,6 +43,18 @@ alt powered on
   alt Not application
     I->>M: Get current media
     M->>S: GetMediaInfo
+    alt Live programme
+      I->>M: Get current live TV
+      opt Get EPG if required
+        M->>E: Get EPG
+      end
+      opt Get live record status
+        M->>J: pvr/?limit=1000&offset=0
+      end
+    else Recording
+      I->>M: Get recording
+      M->>S: pvr/details/{pvrid}
+    end
   end
 end
 ```
