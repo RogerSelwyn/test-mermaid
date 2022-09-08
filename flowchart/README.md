@@ -1,3 +1,5 @@
+# Key sequences
+
 ## Startup sequence
 
 ```mermaid
@@ -55,6 +57,17 @@ alt powered on
       I->>M: Get recording
       M->>S: pvr/details/{pvrid}
     end
+  else Application
   end
 end
 ```
+
+## Quota sequence
+
+```mermaid
+sequenceDiagram
+participant I as Integration
+participant M as Module
+participant J as 9006 JSON
+I->>M: Get quota
+M->>J: pvr/storage
