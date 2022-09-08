@@ -1,7 +1,12 @@
+Starup sequence flow
+
 ```mermaid
 sequenceDiagram
-participant A as Alice
-participant J as John
-A->>J: Hello John, how are you?
-J->>A: Great!
+participant I as Integration
+participant M as Module
+participant J as 9006
+I->>M: system/deviceinformation
+M->>J: system/deviceinformation
+M->>J: system/information
+M->>J: system/time
 ```
