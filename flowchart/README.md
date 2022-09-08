@@ -26,7 +26,9 @@ M->>J: services/{bouquet}/{subbouquet}
 I->>M: Get power status
 M->>J: system/information
 alt powered on
-  alt 1st SOAP call
+  opt 1st SOAP call
     M->>X: description{0-n}.xml
+  end
   M->>S: GetTransportInfo
+end
 ```
